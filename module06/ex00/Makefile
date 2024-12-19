@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2024/12/18 18:55:09 by tissad           ###   ########.fr        #
+#    Updated: 2024/12/19 12:00:36 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,12 @@ CXX = c++
 CXXFLAGS = -g -Wall -Wextra -Werror -Wshadow -std=c++98 
 
 # Target name
-TARGET = ex00
+TARGET = convert
 
 # Sources files
 SRCS =	main.cpp \
+		ScalarConverter.cpp
+		
 
 # Include files
 INC = ./inc
