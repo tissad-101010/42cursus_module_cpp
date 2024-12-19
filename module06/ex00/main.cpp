@@ -6,18 +6,19 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:50:43 by tissad            #+#    #+#             */
-/*   Updated: 2024/12/19 15:15:42 by tissad           ###   ########.fr       */
+/*   Updated: 2024/12/19 20:51:10 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-    ScalarConverter::convert("0");
-    // ScalarConverter::convert("42");
-    // ScalarConverter::convert("a");
-    // ScalarConverter::convert("nan");
-    // ScalarConverter::convert("sfd");
+    if (ac != 2)
+    {
+        std::cout << "Usage: ./convert literal" << std::endl;
+        return (1);
+    }
+    ScalarConverter::convert(av[1]);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:03:22 by tissad            #+#    #+#             */
-/*   Updated: 2024/12/19 15:36:14 by tissad           ###   ########.fr       */
+/*   Updated: 2024/12/19 20:36:11 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter const &other);
 		ScalarConverter &operator=(ScalarConverter const &other);
 		~ScalarConverter();
-		class ImpossibleConversionException : public std::exception
-		{
-			public:
-				const char *what() const throw();
-		};
-		class NonDisplayableException : public std::exception
-		{
-			public:
-				const char *what() const throw();
-		};
+		
+		static void convertChar(const std::string &literal);
+		static void convertInt(const std::string &literal);
+		static void convertFloat(const std::string &literal);
+		static void convertDouble(const std::string &literal);
+		static void printChar(char c);
+		
 	public:
 	
 		static void convert(const std::string &literal);
