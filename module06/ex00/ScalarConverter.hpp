@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:03:22 by tissad            #+#    #+#             */
-/*   Updated: 2024/12/19 20:36:11 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/06 21:24:02 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@
 #include <iostream>
 #include <string>
 
-#define CHAR 1
-#define INT 2
-#define FLOAT 3
-#define DOUBLE 4
+enum e_type
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	SPECIAL,
+	INVALID
+};
 
 class ScalarConverter
 {
@@ -30,13 +35,26 @@ class ScalarConverter
 		ScalarConverter &operator=(ScalarConverter const &other);
 		~ScalarConverter();
 		
+		static e_type getType(const std::string &literal);
+		
+		static bool isSpecial(const std::string &literal);
+		static bool isChar(const std::string &literal);
+		static bool isInt(const std::string &literal);
+		static bool isFloat(const std::string &literal);
+		static bool isDouble(const std::string &literal);
+		
+		static void printChar(long c);
+		static void printInt(long i);
+		static void printFloat(double f);
+		static void printDouble(double d);
+
 		static void convertChar(const std::string &literal);
 		static void convertInt(const std::string &literal);
 		static void convertFloat(const std::string &literal);
-		static void convertDouble(const std::string &literal);
-		static void printChar(char c);
-		
-	public:
+
+        static void convertSpecial(const std::string &literal);
+
+    public:
 	
 		static void convert(const std::string &literal);
 		

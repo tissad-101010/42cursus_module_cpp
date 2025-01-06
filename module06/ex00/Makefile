@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2024/12/19 12:00:36 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/06 20:36:40 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS =	main.cpp \
 		
 
 # Include files
-INC = ./inc
+INC = ./
 
 # Object files (from source files)
 OBJS = $(SRCS:.cpp=.o)
