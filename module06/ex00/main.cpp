@@ -6,12 +6,18 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:50:43 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/07 12:10:50 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/07 15:00:21 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <limits>
+
+
+    #include <float.h>
+#include <math.h>
+#include <stdio.h>
+
 
 int main(int ac, char **av)
 {
@@ -20,12 +26,12 @@ int main(int ac, char **av)
         std::cout << "Usage: ./convert literal" << std::endl;
         return (1);
     }
+    
     ScalarConverter::convert(av[1]);
-    
-    std::cout << std::endl << 214748.9 << std::endl;
-    
+
     // std::cout << std::endl << std::numeric_limits<int>::max() << std::endl;
     // std::cout << std::endl << static_cast<float>(std::numeric_limits<int>::max()) << std::endl;
     // std::cout << std::endl << static_cast<double>(std::numeric_limits<int>::max()) << std::endl;
+    
     return (0);
 }

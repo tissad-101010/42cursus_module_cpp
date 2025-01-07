@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:30:46 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/07 12:31:10 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/07 15:02:12 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,19 @@ void ScalarConverter::printInt(long i)
 		std::cout << static_cast<int> (i) << std::endl;
 }
 
-void ScalarConverter::printFloat(double f)
+void ScalarConverter::printFloat(float f)
 {
 	std::cout << "float: ";
 	try
 	{
-		if (isnan(f) || isinf(f))
-			throw std::overflow_error("impossible");
-		std::cout	
-					<< static_cast<float>(f) 
-					<< "f" << std::endl;
+		if (std::isnan(f) || std::isinf(f))
+		 	throw std::overflow_error("impossible");
+		else
+			std::cout << f << "f" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
 
@@ -143,10 +142,9 @@ void ScalarConverter::printDouble(double d)
 	std::cout << "double: ";
 	try
 	{
-		if (isnan(d) || isinf(d))
+		if (std::isnan(d) || std::isinf(d))
 			throw std::overflow_error("impossible");
-		std::cout		
-					<< d << std::endl;
+		std::cout << d << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -163,7 +161,7 @@ void ScalarConverter::convertChar(const std::string &literal)
 		c = static_cast<long>(literal[1]);
 	printChar(c);
 	printInt(c);
-	printFloat(static_cast<double>(c));
+	printFloat(static_cast<float>(c));
 	printDouble(static_cast<double>(c));
 }
 
@@ -175,7 +173,7 @@ void ScalarConverter::convertInt(const std::string &literal)
 	i = std::strtol(literal.c_str(), &end, 10);
 	printChar(i);
 	printInt(i);
-	printFloat(static_cast<double>(i));
+	printFloat(static_cast<float>(i));
 	printDouble(static_cast<double>(i));
 }
 
