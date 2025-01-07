@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:30:46 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/06 21:27:58 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/07 12:31:10 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ ScalarConverter::~ScalarConverter(){};
 
 bool ScalarConverter::isChar(const std::string &literal)
 {
-	if ((literal.length() == 1 && !isdigit(literal[0]))
-		|| (literal.length() == 3 && literal[0] == '\'' && literal[2] == '\''))
+	if ((literal.length() == 1 && !isdigit(literal[0])))
+		return (true);
+	else if ((literal.length() == 3 
+			&& literal[0] == '\'' 
+			&& literal[2] == '\''))
 		return (true);
 	return (false);
 }
@@ -57,7 +60,7 @@ bool ScalarConverter::isFloat(const std::string &literal)
 	char	*end;
 	
 	std::strtof(literal.c_str(), &end);
-	if (*end == '\0' || literal[literal.length() - 1] == 'f')
+	if (*end == 'f' && *(end + 1) == '\0')
 		return (true);
 	return (false);
 }
@@ -74,7 +77,10 @@ bool ScalarConverter::isDouble(const std::string &literal)
 
 bool ScalarConverter::isSpecial(const std::string &literal)
 {
-	if (literal == "nan" || literal == "-inf" || literal == "+inf" || literal == "inf")
+	if (literal == "nan"
+		|| literal == "-inf"
+		|| literal == "+inf"
+		|| literal == "inf")
 		return (true);
 	return (false);
 }
@@ -112,18 +118,19 @@ void ScalarConverter::printInt(long i)
 	if (i > std::numeric_limits<int>::max() || i < std::numeric_limits<int>::min())
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << i << std::endl;
+		std::cout << static_cast<int> (i) << std::endl;
 }
 
 void ScalarConverter::printFloat(double f)
 {
 	std::cout << "float: ";
-	// test if overflow or underflow the float with try catch
 	try
 	{
 		if (isnan(f) || isinf(f))
 			throw std::overflow_error("impossible");
-		std::cout << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+		std::cout	
+					<< static_cast<float>(f) 
+					<< "f" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -134,10 +141,17 @@ void ScalarConverter::printFloat(double f)
 void ScalarConverter::printDouble(double d)
 {
 	std::cout << "double: ";
-	if (isnan(d) || isinf(d))
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << d << std::endl;
+	try
+	{
+		if (isnan(d) || isinf(d))
+			throw std::overflow_error("impossible");
+		std::cout		
+					<< d << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void ScalarConverter::convertChar(const std::string &literal)
@@ -199,10 +213,28 @@ void ScalarConverter::convertSpecial(const std::string &literal)
 	}
 }
 
+int ScalarConverter::getPrecision(const std::string &literal)
+{
+	int count = 0;
+	
+	for (size_t i = 0; i < literal.length(); i++)
+	{
+		if (literal[i] == '.')
+		{
+			count = literal.length() - i - 1;
+			break;	
+		}
+	}
+	count = (count == 0) ? 1 : count;
+	return (count);
+}
+
 void ScalarConverter::convert(const std::string &literal)
 {
 	// use swtich case to call the right function
 	// based on the type of the literal
+	
+	std::cout << std::fixed << std::setprecision(getPrecision(literal));
 	e_type type = getType(literal);
 	
 	switch (type)	// switch case

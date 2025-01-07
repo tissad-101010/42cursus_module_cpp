@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:03:22 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/06 21:24:02 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/07 12:28:27 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ class ScalarConverter
 		static void convertChar(const std::string &literal);
 		static void convertInt(const std::string &literal);
 		static void convertFloat(const std::string &literal);
-
+		
         static void convertSpecial(const std::string &literal);
+
+		static int getPrecision(const std::string &literal);
 
     public:
 	
