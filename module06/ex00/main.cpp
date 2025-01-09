@@ -6,15 +6,14 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:50:43 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/07 15:00:21 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/09 22:56:10 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
 #include <limits>
-
-
-    #include <float.h>
+#include <float.h>
 #include <math.h>
 #include <stdio.h>
 

@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2025/01/06 20:36:40 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/09 18:27:07 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,18 @@ CXX = c++
 CXXFLAGS = -g -Wall -Wextra -Werror -Wshadow -std=c++98 
 
 # Target name
-TARGET = convert
+TARGET = identify
 
 # Sources files
 SRCS =	main.cpp \
-		ScalarConverter.cpp
+		src/Base.cpp \
+		src/A.cpp \
+		src/B.cpp \
+		src/C.cpp \
 		
 
 # Include files
-INC = ./
+INC = ./inc
 
 # Object files (from source files)
 OBJS = $(SRCS:.cpp=.o)

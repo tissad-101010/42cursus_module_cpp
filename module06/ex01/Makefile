@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2025/01/07 23:09:25 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/09 16:41:32 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ TARGET = serialize
 
 # Sources files
 SRCS =	main.cpp \
-		Serializer.cpp\
-		Data.cpp
+		src/Serializer.cpp\
+		src/Data.cpp
 		
 		
 
 # Include files
-INC = ./
+INC = ./inc
 
 # Object files (from source files)
 OBJS = $(SRCS:.cpp=.o)
@@ -41,7 +41,7 @@ $(TARGET): $(OBJS)
 
 # Rule to compile the object files
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I$(INC) -c $< -o $@
 
 # Rule to clean object files
 clean:
