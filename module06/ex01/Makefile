@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2025/01/06 20:36:40 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/07 23:09:25 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,13 @@ CXX = c++
 CXXFLAGS = -g -Wall -Wextra -Werror -Wshadow -std=c++98 
 
 # Target name
-TARGET = convert
+TARGET = serialize
 
 # Sources files
 SRCS =	main.cpp \
-		ScalarConverter.cpp
+		Serializer.cpp\
+		Data.cpp
+		
 		
 
 # Include files
@@ -35,11 +37,11 @@ all: $(TARGET)
 
 # Rule to compile the target
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -I$(INC) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 # Rule to compile the object files
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -I$(INC) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Rule to clean object files
 clean:

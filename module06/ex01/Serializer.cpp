@@ -1,12 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serialization.cpp                                  :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:03:31 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/07 15:03:32 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/07 23:09:05 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Serializer.hpp"
+
+Serializer::Serializer()
+{
+}
+
+Serializer::Serializer(Serializer const &other)
+{
+	(void)other;
+}
+
+Serializer &Serializer::operator=(Serializer const &other)
+{
+	(void)other;
+	return (*this);
+}
+
+Serializer::~Serializer()
+{
+}
+
+
+
+void* Serializer::serialize(Data* ptr)
+{
+	return (reinterpret_cast<void *>(ptr));
+}
+
+Data* Serializer::deserialize(void * raw)
+{
+	return (reinterpret_cast<Data*>(raw));
+}
