@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:03:31 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/07 23:09:05 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/10 12:48:37 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ Serializer::~Serializer()
 
 
 
-void* Serializer::serialize(Data* ptr)
+uintptr_t Serializer::serialize(Data* ptr)
 {
 	return (reinterpret_cast<void *>(ptr));
 }
 
-Data* Serializer::deserialize(void * raw)
+Data* Serializer::deserialize(uintptr_t raw)
 {
 	return (reinterpret_cast<Data*>(raw));
 }

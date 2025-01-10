@@ -1,30 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.tpp                                       :+:      :+:    :+:   */
+/*    MutantStack.tpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:46:29 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/10 10:12:15 by tissad           ###   ########.fr       */
+/*   Created: 2025/01/10 10:25:18 by tissad            #+#    #+#             */
+/*   Updated: 2025/01/10 10:25:19 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __EASYFIND_TPP__
-#define __EASYFIND_TPP__
-
-#include "easyfind.hpp"
-
-// Implémentation de easyfind
-template <typename T>
-typename T::const_iterator easyfind(const T& container, int value)
-{
-	typename T::const_iterator it = std::find(container.begin(), container.end(), value);
-	if (it == container.end())
-	{
-		throw NotFoundException();
-	}
-	return it;
-}
-
-#endif // __EASYFIND_TPP__

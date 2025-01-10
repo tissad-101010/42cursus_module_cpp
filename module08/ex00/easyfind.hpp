@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:46:29 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/03 22:00:00 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/10 10:12:41 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 // Classe NotFoundException that inherits from std::exception
 class NotFoundException : public std::exception {
 public:
-    const char* what() const throw()
-    {
-        return "Element not found in the container";
-    }
+	const char* what() const throw()
+	{
+		return "Element not found in the container";
+	}
 };
 
 // Fonction easyfind that takes a container and a value as parameters

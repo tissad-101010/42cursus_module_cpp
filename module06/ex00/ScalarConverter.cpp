@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:30:46 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/07 15:02:12 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/10 12:42:48 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,10 @@ bool ScalarConverter::isDouble(const std::string &literal)
 	return (false);
 }
 
-bool ScalarConverter::isSpecial(const std::string &literal)
-{
-	if (literal == "nan"
-		|| literal == "-inf"
-		|| literal == "+inf"
-		|| literal == "inf")
-		return (true);
-	return (false);
-}
-
 e_type ScalarConverter::getType(const std::string &literal)
 {
 	
-	if (isSpecial(literal))
-		return (SPECIAL);
-	else if (isChar(literal))
+	if (isChar(literal))
 		return (CHAR);
 	else if (isInt(literal))
 		return (INT);
@@ -126,7 +114,7 @@ void ScalarConverter::printFloat(float f)
 	std::cout << "float: ";
 	try
 	{
-		if (std::isnan(f) || std::isinf(f))
+		if (std::isinf(f))
 		 	throw std::overflow_error("impossible");
 		else
 			std::cout << f << "f" << std::endl;
@@ -142,9 +130,10 @@ void ScalarConverter::printDouble(double d)
 	std::cout << "double: ";
 	try
 	{
-		if (std::isnan(d) || std::isinf(d))
+		if (std::isinf(d))
 			throw std::overflow_error("impossible");
-		std::cout << d << std::endl;
+		else
+			std::cout << d << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -180,35 +169,27 @@ void ScalarConverter::convertInt(const std::string &literal)
 void ScalarConverter::convertFloat(const std::string &literal)
 {
 	char	*end;
-	double	f;
+	float	f;
 
 	f = std::strtof(literal.c_str(), &end);
-	printChar(static_cast<long>(f));
+	//printChar(static_cast<long>(f));
+	std::cout << "char: impossible" << std::endl;
 	printInt(static_cast<long>(f));
 	printFloat(f);
-	printDouble(f);
+	printDouble(static_cast<double>(f));
 }	
 
-void ScalarConverter::convertSpecial(const std::string &literal)
+void ScalarConverter::convertDouble(const std::string &literal)
 {
-	
+	char	*end;
+	double	d;
+
+	d = std::strtod(literal.c_str(), &end);
+	//printChar(static_cast<long>(d));
 	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: impossible" << std::endl;
-	if (literal == "nan")
-	{
-		std::cout << "float: nanf" << std::endl;
-		std::cout << "double: nan" << std::endl;	
-	}
-	else if (literal == "-inf")
-	{
-		printFloat(-INFINITY);
-		printDouble(-INFINITY);
-	}
-	else if (literal == "+inf" || literal == "inf")
-	{
-		printFloat(INFINITY);
-		printDouble(INFINITY);
-	}
+	printInt(static_cast<long>(d));
+	printFloat(static_cast<float>(d));
+	printDouble(d);
 }
 
 int ScalarConverter::getPrecision(const std::string &literal)
@@ -223,16 +204,17 @@ int ScalarConverter::getPrecision(const std::string &literal)
 			break;	
 		}
 	}
+	if(literal[literal.length() - 1] == 'f')
+		count--;
 	count = (count == 0) ? 1 : count;
 	return (count);
 }
 
 void ScalarConverter::convert(const std::string &literal)
 {
-	// use swtich case to call the right function
-	// based on the type of the literal
-	
+
 	std::cout << std::fixed << std::setprecision(getPrecision(literal));
+	
 	e_type type = getType(literal);
 	
 	switch (type)	// switch case
@@ -247,10 +229,7 @@ void ScalarConverter::convert(const std::string &literal)
 			convertFloat(literal);
 			break;
 		case DOUBLE:
-			convertFloat(literal);
-			break;
-		case SPECIAL:
-			convertSpecial(literal);
+			convertDouble(literal);
 			break;
 		case INVALID:
 			std::cout << "Invalid input" << std::endl;

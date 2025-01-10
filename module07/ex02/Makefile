@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2025/01/03 18:23:27 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/10 14:54:38 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,12 @@ CXXFLAGS = -g -Wall -Wextra -Werror -Wshadow -std=c++98
 TARGET = array
 
 # Sources files
-SRCS = main.cpp
+SRCS =	main.cpp \
+		./src/Complex.cpp
+		
 		
 # Include files
-INC = ./
+INC = ./inc
 
 # Object files (from source files)
 OBJS = $(SRCS:.cpp=.o)

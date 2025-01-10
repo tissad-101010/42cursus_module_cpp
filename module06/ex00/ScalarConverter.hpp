@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:03:22 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/07 14:48:18 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/10 12:43:13 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ enum e_type
 	INT,
 	FLOAT,
 	DOUBLE,
-	SPECIAL,
 	INVALID
 };
 
@@ -37,7 +36,6 @@ class ScalarConverter
 		
 		static e_type getType(const std::string &literal);
 		
-		static bool isSpecial(const std::string &literal);
 		static bool isChar(const std::string &literal);
 		static bool isInt(const std::string &literal);
 		static bool isFloat(const std::string &literal);
@@ -51,14 +49,12 @@ class ScalarConverter
 		static void convertChar(const std::string &literal);
 		static void convertInt(const std::string &literal);
 		static void convertFloat(const std::string &literal);
-		
-        static void convertSpecial(const std::string &literal);
+		static void convertDouble(const std::string &literal);
+
 
 		static int getPrecision(const std::string &literal);
 
     public:
-	
 		static void convert(const std::string &literal);
-		
 };
 #endif

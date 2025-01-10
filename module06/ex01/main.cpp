@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:50:43 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/09 16:43:55 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/10 12:48:43 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int main() {
 	Data originalData2(2, "Test Data2");
 
     // Serialize the Data object
-    void* serializedData = Serializer::serialize(&originalData);
-	void* serializedData2 = Serializer::serialize(&originalData2);
+    uintptr_t serializedData = Serializer::serialize(&originalData);
+	uintptr_t serializedData2 = Serializer::serialize(&originalData2);
 
     // Deserialize back to a Data pointer
     Data* deserializedData = Serializer::deserialize(serializedData);

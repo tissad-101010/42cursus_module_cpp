@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.tpp                                       :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:46:29 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/10 10:12:15 by tissad           ###   ########.fr       */
+/*   Created: 2025/01/10 14:47:01 by tissad            #+#    #+#             */
+/*   Updated: 2025/01/10 14:49:30 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __EASYFIND_TPP__
-#define __EASYFIND_TPP__
+#ifndef __MAIN_HPP__
+#define __MAIN_HPP__
 
-#include "easyfind.hpp"
+#include <Array.hpp>
+#include <Complex.hpp>
 
-// Implémentation de easyfind
-template <typename T>
-typename T::const_iterator easyfind(const T& container, int value)
-{
-	typename T::const_iterator it = std::find(container.begin(), container.end(), value);
-	if (it == container.end())
-	{
-		throw NotFoundException();
-	}
-	return it;
-}
+// A function squaring an integer
+void sqrInt(int& x);
+// function that transforms an string to uppercase
+void toUpper(std::string& str);
 
-#endif // __EASYFIND_TPP__
+#endif
