@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2025/01/03 19:19:37 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/13 14:58:33 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CXX = c++
 CXXFLAGS = -g -Wall -Wextra -Werror -Wshadow -std=c++98 
 
 # Target name
-TARGET = exec
+TARGET = easyfind
 
 # Sources files
 SRCS =	main.cpp \
