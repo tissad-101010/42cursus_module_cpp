@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:43:24 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/13 17:18:35 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/14 12:45:42 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,15 @@ int main()
 	srand(time(NULL));
 	// initialize mstack with random integers from 0 to MAX_VAL
 	for (size_t i = 0; i < MAX_VAL; i++)
-		mstack.push(rand() % 10);
-
+		mstack.push_back(rand() % 10);
+	
+	for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	
 	std::cout << "Size of mstack: " << mstack.size() << std::endl;
 	std::cout << "Top of mstack: " << mstack.top() << std::endl;
-	mstack.pop();
+	mstack.pop_back();
 	
 	std::cout << "Size of mstack after pop: " << mstack.size() << std::endl;
 	std::cout << "Top of mstack after pop: " << mstack.top() << std::endl;

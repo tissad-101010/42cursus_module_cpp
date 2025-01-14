@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:25:18 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/13 16:08:10 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/14 12:44:06 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const {
 template <typename T>
 typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const {
 	return std::stack<T>::c.rend();
+}
+
+template <typename T>
+void MutantStack<T>::push_back(const T& value) {
+	std::stack<T>::push(value);
+}
+
+template <typename T>
+void MutantStack<T>::pop_back() {
+	std::stack<T>::pop();
 }
 
 template <typename T>

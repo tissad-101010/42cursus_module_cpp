@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 22:18:14 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/13 17:45:03 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/14 11:55:12 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <vector>
 #include <algorithm>
 #include <exception>
+#include <iostream>
 
 class Span
 {
@@ -27,13 +28,14 @@ class Span
 		Span(unsigned int N);
 		~Span();
 
-
+		unsigned int getMaxSize() const;
+		std::vector<int> getNumbers()const;
 		void addNumber(int number);
 		template <typename Iterator>
 		void addNumbers(Iterator begin, Iterator end);
 		int shortestSpan() const;
 		int longestSpan() const;
-
+		
 		class SpanFullException : public std::exception {
 		public:
 			const char* what() const throw() {
@@ -49,6 +51,7 @@ class Span
 		};
 };
 
+std::ostream& operator<<(std::ostream& os, const Span& span);
 
 template <typename Iterator>
 void Span::addNumbers(Iterator begin, Iterator end) {

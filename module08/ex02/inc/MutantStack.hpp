@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:25:23 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/13 16:13:43 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/14 12:43:46 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ class MutantStack : public std::stack<T> {
 		const_reverse_iterator rbegin() const;
 
 		const_reverse_iterator rend() const;
+		
+		void push_back(const T& value);
+		void pop_back();
 };
 
 // operator << overloading

@@ -6,7 +6,7 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:43:24 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/13 17:47:41 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/14 12:16:15 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int main() {
 		Span smallSpan(2);
 		smallSpan.addNumber(1);
 		smallSpan.addNumber(2);
+		std::cout << smallSpan << std::endl;
 		smallSpan.addNumber(3); // should throw an exception
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
