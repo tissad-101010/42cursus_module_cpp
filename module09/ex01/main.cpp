@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 17:20:41 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/16 17:47:29 by tissad           ###   ########.fr       */
+/*   Created: 2025/01/16 17:44:56 by tissad            #+#    #+#             */
+/*   Updated: 2025/01/16 17:46:23 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __RPN_HPP__
-#define __RPN_HPP__
+#include "RPN.hpp"
 
-#include <iostream>
-#include <string>
-#include <stack>
-#include <cstdlib>
-
-class RPN
+int main(int ac, char **av)
 {
-	private:
-		RPN();
-		RPN(const RPN &rhs);
-		RPN &operator=(const RPN &rhs);
-		~RPN();
-	public:
-		static void rpn(const std::string &str);
-};
-
-#endif
+    if (ac != 2)
+    {
+        std::cerr << "Error" << std::endl;
+        return 1;
+    }
+    RPN::rpn(av[1]);
+}
