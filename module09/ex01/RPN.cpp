@@ -6,12 +6,13 @@
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:20:49 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/16 18:26:06 by tissad           ###   ########.fr       */
+/*   Updated: 2025/01/16 21:07:01 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
+std::stack<int> RPN::_stack;
 
 RPN::RPN()
 {
@@ -33,42 +34,71 @@ RPN::~RPN()
 {
 }
 
+bool RPN::_isOperator(const char &c)
+{
+	if (c == '+' || c == '-' || c == '*' || c == '/' || c == '%')
+		return (true);
+	return (false);
+}
+
+void RPN::_doOperation(const char &c)
+{
+	int a;
+	int b;
+	
+	if (_stack.size() < 2)
+	{
+		std::cout << "Error" << std::endl;
+		exit(1); ;
+	}
+	b = _stack.top();
+	_stack.pop();
+	a = _stack.top();
+	_stack.pop();
+	if (c == '+')
+		_stack.push(a + b);
+	else if (c == '-')
+		_stack.push(a - b);
+	else if (c == '*')
+		_stack.push(a * b);
+	else if (c == '/')
+		_stack.push(a / b);
+	else if (c == '%')
+		_stack.push(a % b);
+}
+
 
 void RPN::rpn(const std::string &str)
 {
-	std::stack<int> stack;
-	std::string ops = "+-/*";
-	for(size_t i = 0; i < str.size(); i++)
+	int i = 0;
+	
+	while (str[i])
 	{
-		if (str[i] != ' ' && !isdigit(str[i]) && ops.find(str[i]) == std::string::npos)
-		{	
-			std::cout << "yyyyyError" << std::endl;
-			return;	
-		}
-		while (str[i] && str[i] == ' ')
-			i++;
-		if (isdigit(str[i]))
-			stack.push((str[i] - '0'));
-		while (str[i] && str[i] == ' ')
-			i++;
-		if (ops.find(str[i]) != std::string::npos && stack.size() == 2)
+		if (str[i] == ' ')
 		{
-			int a = stack.top();
-			stack.pop();
-			int b = stack.top();
-			stack.pop();
-			if (str[i] == '+')
-				stack.push(b + a);
-			else if (str[i] == '-')
-				stack.push(b - a);
-			else if (str[i] == '/')
-				stack.push(b / a);
-			else if (str[i] == '*')
-				stack.push(b * a);
+			i++;
+			continue;
+		}
+		else if (isdigit(str[i]))
+		{
+			_stack.push(str[i] - '0');
+			i++;
+		}
+		else if (_isOperator(str[i]))
+		{
+			_doOperation(str[i]);
+			i++;
+		}
+		else
+		{
+			std::cout << "Error" << std::endl;
+			return ;
 		}
 	}
-	if (stack.size() == 1)
-		std::cout << stack.top() << std::endl;
-	else
+	if (_stack.size() != 1)
+	{
 		std::cout << "Error" << std::endl;
+		return ;
+	}
+	std::cout << _stack.top() << std::endl;
 }
