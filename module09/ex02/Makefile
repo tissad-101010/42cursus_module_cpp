@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2025/01/13 17:03:15 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/16 21:11:48 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,10 @@ CXX = c++
 CXXFLAGS = -g -Wall -Wextra -Werror -Wshadow -std=c++98 
 
 # Target name
-TARGET = mutantstack
+TARGET = PmergeMe
 
 # Sources files
 SRCS =	main.cpp \
-		./srcs/Complex.cpp
 
 # Include files
 INC = ./inc
