@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tissad <tissad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 17:23:19 by tissad            #+#    #+#             */
-/*   Updated: 2025/01/16 16:45:18 by tissad           ###   ########.fr       */
+/*   Created: 2025/01/16 12:37:54 by tissad            #+#    #+#             */
+/*   Updated: 2025/01/16 14:43:28 by tissad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
-#include <iostream>
-#include <iomanip>
+#ifndef __UTILS_HPP__
+# define __UTILS_HPP__
 
-int main(int ac, char **av)
+#include <iostream>
+
+
+enum validDouble
 {
-	if (ac != 2)
-	{
-		std::cerr << "Error: could not open file." << std::endl;
-		return (1);
-	}
-	BitcoinExchange::exchange(av[1]);
-	return (0);
-}
+	VALID,
+	NEGATIVE,
+    LARGE,
+	OTHER
+};
+
+//function to check if a string is a valid format date (YYYY-MM-DD)
+bool isValidDate(const std::string& date);
+//function to check if a string is a valid double
+int isValidDouble(const std::string& str);
+
+#endif

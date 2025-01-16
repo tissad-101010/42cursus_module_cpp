@@ -6,7 +6,7 @@
 #    By: tissad <tissad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 08:44:42 by tissad            #+#    #+#              #
-#    Updated: 2025/01/14 17:22:06 by tissad           ###   ########.fr        #
+#    Updated: 2025/01/16 12:57:54 by tissad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ TARGET = btc
 
 # Sources files
 SRCS =	main.cpp \
+		./src/BitcoinExchange.cpp \
+		./src/utils.cpp \
 
 # Include files
 INC = ./inc
